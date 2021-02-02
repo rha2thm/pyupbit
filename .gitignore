@@ -6,3 +6,4 @@ pyupbit.egg-info
 venv/*
 upbit.txt
 build/*
+.DS_Store

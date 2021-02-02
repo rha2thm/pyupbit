@@ -127,6 +127,23 @@ def get_current_price(ticker="KRW-BTC"):
         print(x.__class__.__name__)
 
 
+def get_trades(ticker="KRW-BTC", to='', days=0):
+    '''
+    최근 시세 체결 조회
+    :param tickers: 티커 목록을 문자열
+    :param to: HH:mm:ss
+    :param daysAgo:
+    :return:
+    '''
+    try:
+        url = "https://api.upbit.com/v1/trades/ticks"
+        contents = _call_public_api(url, market=ticker, to=to, count=500, daysAgo=days)[0]
+        return contents
+    except Exception as x:
+        print(x.__class__.__name__)
+        return None
+
+
 def get_orderbook(tickers="KRW-BTC"):
     '''
     호가 정보 조회
@@ -140,6 +157,7 @@ def get_orderbook(tickers="KRW-BTC"):
     except Exception as x:
         print(x.__class__.__name__)
         return None
+
 
 
 if __name__ == "__main__":
